@@ -9,7 +9,7 @@ class ChoiceInline(admin.StackedInline):
 
 class QuestionInline(admin.StackedInline):
     model = Question
-    extra = 1  # Number of questions displayed per lesson
+    extra = 5  # Number of questions displayed per lesson
 
 class LessonInline(admin.StackedInline):
     model = Lesson
@@ -29,13 +29,11 @@ class LessonAdmin(admin.ModelAdmin):
 
 # <HINT> Register Question and Choice models here
 class QuestionAdmin(admin.ModelAdmin):
-   fields = ['course', 'question_text', 'question_grade']
-   inlines = [QuestionInline]
+   list_display = ['question_text', 'grade']
 
 class ChoiceAdmin(admin.ModelAdmin):
-    fields = ['question', 'choice_text', 'is_correct']
-    inlines = [ChoiceInline]
-
+    list_display = ['choice_text', 'is_correct']
+    
 admin.site.register(Course, CourseAdmin)
 admin.site.register(Lesson, LessonAdmin)
 admin.site.register(Instructor)
