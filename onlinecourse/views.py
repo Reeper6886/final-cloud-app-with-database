@@ -152,7 +152,10 @@ def show_exam_result(request, course_id, submission_id):
         total_possible_score += question.grade
         if choice.is_correct:
             score += question.grade
-    grade = score / total_possible_score * 100
+    if score > 0:
+        grade = score / total_possible_score * 100
+    else:
+        grade = 0
     context = {
         "course": course,
         "selected_ids": selected_ids,

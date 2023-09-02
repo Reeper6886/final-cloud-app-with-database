@@ -57,15 +57,17 @@
                         <div class="card-header"><h5>{{question.question_text}}</h5></div>
                             <div class="card-body pt-0">
                                 {% for choice in question.choice_set.all %}
+                                <div>
                                     {% if choice.id in selected_ids and choice.is_correct %}
-                                        <div class="text-success">Correct answer: {{choice.choice_text}}</div>
+                                    <div class="text-success">Correct answer: {{choice.choice_text}}</div>
                                     {% elif choice.id in selected_ids %}
-                                        <div class="text-danger">Wrong answer: {{choice.choice_text}}</div>
+                                    <div class="text-danger">Wrong answer: {{choice.choice_text}}</div>
                                     {% elif choice.is_correct %}
-                                        <div class="text-warning">Not selected: {{choice.choice_text}}</div>
+                                    <div class="text-warning">Not selected: {{choice.choice_text}}</div>
                                     {% else %}
-                                        <div>{{choice.choice_text}}</div>
+                                    <div>{{choice.choice_text}}</div>
                                     {% endif %}
+                                </div>
                                 {% endfor %}
                             </div>
                     </div>
