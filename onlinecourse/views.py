@@ -145,6 +145,7 @@ def show_exam_result(request, course_id, submission_id):
     choices = submission.choices.all()
     score = 0.0
     total_possible_score = 0.0
+    total_score = 100
     selected_ids = []
     for choice in choices:
         selected_ids.append(choice.id)
@@ -161,6 +162,7 @@ def show_exam_result(request, course_id, submission_id):
         "selected_ids": selected_ids,
         "grade": grade,
         "score": score,
-        "total_possible_score": total_possible_score
+        "total_possible_score": total_possible_score,
+        "total_score": total_score
     }
     return render(request, 'onlinecourse/exam_result_bootstrap.html', context)
